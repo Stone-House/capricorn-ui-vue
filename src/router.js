@@ -21,14 +21,16 @@ const router = new Router({
           // route level code-splitting
           // this generates a separate chunk (about.[hash].js) for this route
           // which is lazy-loaded when the route is visited.
-          component: () =>
-            import(/* webpackChunkName: "about" */ './views/About.vue'),
-        },{
-          path: '/'
-        }
+          component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+        },
+        {
+          path: '/vue-fusion-charts',
+          name: 'vue-fusion-charts',
+          component: () => import('./views/list/vueFusionCharts.vue'),
+        },
       ],
     },
-    
+
     {
       path: '/login',
       name: 'login',
@@ -38,7 +40,7 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  let username = localStorage.getItem('username');
+  const username = localStorage.getItem('username');
 
   if (username) {
     if (to.name === 'login') {
@@ -46,7 +48,7 @@ router.beforeEach((to, from, next) => {
     } else {
       next();
     }
-  } else if (to.name != 'login') {
+  } else if (to.name !== 'login') {
     next('/login');
   } else {
     next();

@@ -3,20 +3,25 @@
         <div :class="imgClass">
             <img alt="Vue logo" src="../assets/logo-mini.png">
         </div>
-        
-        <el-menu :router="true" class="el-menu-vertical-demo" :collapse="isOpen" @open="handleOpen" @close="handleClose">
-            <el-submenu index="1">
-                <template slot="title">
-                    <i class="el-icon-location"></i>
-                    <span slot="title">权限管理</span>
-                </template>
+        <div class="scrollbar-wrapper">
+          <el-scrollbar wrap-class="scrollbar-class">
+            <el-menu :router="true" class="el-menu-vertical-demo" :collapse="isOpen" @open="handleOpen" @close="handleClose">
+                <el-submenu index="1">
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span slot="title">权限管理</span>
+                    </template>
 
-                <el-menu-item index="/user-list">用户列表</el-menu-item>
-                <el-menu-item index="/about">角色列表</el-menu-item>
-                <el-menu-item index="/about">资源列表</el-menu-item>
-                <el-menu-item index="/about">日志列表</el-menu-item>
-            </el-submenu>
-        </el-menu>
+                    <el-menu-item index="/user-list">用户列表1</el-menu-item>
+                    <el-menu-item index="/about">角色列表</el-menu-item>
+                    <el-menu-item index="/vue-fusion-charts">倔强图表</el-menu-item>
+                    <el-menu-item index="/about">日志列表</el-menu-item>
+
+                </el-submenu>
+            </el-menu>
+          </el-scrollbar>
+        </div>
+
     </div>
 </template>
 <script>
@@ -24,28 +29,29 @@ export default {
   props: {
     isOpen: Boolean,
   },
-  data(){
-    return{
-      open:true
-    }
+  data() {
+    return {
+      open: true,
+    };
   },
-  computed:{
-    imgClass(){
-      let classes = ['img-wrap'];
-      if(this.isOpen){
-        classes.push('img-wrap-collapse')
+  computed: {
+    imgClass() {
+      const classes = ['img-wrap'];
+      if (this.isOpen) {
+        classes.push('img-wrap-collapse');
       }
-      return classes
-    }
+      return classes;
+    },
   },
-  methods:{
-    handleOpen(){
-      console.log('open')
+  methods: {
+    handleOpen() {
+      console.log('open');
     },
-    handleClose(){
-      console.log('close')
+    handleClose() {
+      console.log('close');
     },
-  }
+  },
+  mounted() {},
 };
 </script>
 
@@ -60,15 +66,42 @@ export default {
       padding: 10px;
       box-sizing: border-box;
     }
-    
   }
-  .img-wrap-collapse{
-      width: 65px;
-    }
-  // .el-menu-vertical-demo:not(.el-menu--collapse) {
-  //   width: 200px;
-  //   min-height: 400px;
-  // }
+  .img-wrap-collapse {
+    width: 65px;
+  }
 
+  .horizontal-collapse-transition {
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+      0s padding-right ease-in-out;
+  }
+
+  // 滚动包裹
+  .scrollbar-wrapper {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+
+    .el-scrollbar{
+      height: 100%;
+    }
+
+    .el-menu{
+      width: 200px;
+      border-right: 0;
+    }
+
+    .el-menu--collapse{
+      width: 64px;
+    }
+
+    // 内部滚动
+    .scrollbar-class {
+      overflow-x: hidden!important;
+      .el-scrollbar__view {
+        height: 100%;
+      }
+    }
+  }
 }
 </style>

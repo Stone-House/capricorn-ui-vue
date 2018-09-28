@@ -1,14 +1,26 @@
 import Vue from 'vue';
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css'
-import Axios from 'axios'
+import 'element-ui/lib/theme-chalk/index.css';
+import Axios from 'axios';
+
+import VueFusionCharts from 'vue-fusioncharts';
+// import FusionCharts modules and resolve dependency
+import FusionCharts from 'fusioncharts/core';
+import Pie2D from 'fusioncharts/viz/pie2d';
+
+
 import App from './App.vue';
 import router from './router';
 import store from './store';
 
-Vue.prototype.$axios = Axios
+
+// register VueFusionCharts component
+Vue.use(VueFusionCharts, FusionCharts, Pie2D);
+
+
+Vue.prototype.$axios = Axios;
 Vue.config.productionTip = false;
-Vue.use(ElementUI)
+Vue.use(ElementUI);
 new Vue({
   router,
   store,

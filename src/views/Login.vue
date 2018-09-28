@@ -3,7 +3,7 @@
         <div class="img-wrap">
            <img src="../assets/logo.png" alt="">
         </div>
-        
+
         <el-form :model="loginForm" label-width="100px">
             <el-form-item label="用户名" prop="username">
                 <el-input v-model="loginForm.username"></el-input>
@@ -31,7 +31,7 @@ export default {
   methods: {
     login() {
       console.log(this.loginForm);
-      let { username, password } = this.loginForm;
+      const { username, password } = this.loginForm;
       if (username && password) {
         localStorage.setItem('username', username);
         localStorage.setItem('password', password);
@@ -41,7 +41,7 @@ export default {
           type: 'success',
         });
         setTimeout(() => {
-          this.$router.replace('/')
+          this.$router.replace('/');
         }, 1000);
       } else {
         this.$notify({

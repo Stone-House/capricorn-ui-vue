@@ -5,7 +5,15 @@
 </template>
 
 <style lang="scss">
-body{
+html,
+body,
+#app,
+.home,
+.el-container {
+  height: 100%;
+}
+
+body {
   margin: 0;
 }
 </style>

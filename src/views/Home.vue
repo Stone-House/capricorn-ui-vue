@@ -10,7 +10,7 @@
           <i @click="toggle" v-else class="el-icon-d-arrow-right convert"></i>
           <ul class="profile">
             <li>
-              
+
               <p class="name">
                 Hello,<span>{{userName}}</span>
               </p>
@@ -25,7 +25,7 @@
             </li>
             <li>
                 <el-badge style="top: -10px;" :value="200" :max="99" class="item">
-                  <img class="small" src="../assets/alert.png" alt="alert">              
+                  <img class="small" src="../assets/alert.png" alt="alert">
                 </el-badge>
             </li>
           </ul>
@@ -39,7 +39,8 @@
 </template>
 
 <script>
-import menuLeft from '../components/menuLeft';
+import menuLeft from '../components/menuLeft.vue';
+
 export default {
   name: 'home',
   components: {
@@ -58,10 +59,10 @@ export default {
       }
       return width;
     },
-    userName(){
-      let username = localStorage.getItem('username')
-      return username
-    }
+    userName() {
+      const username = localStorage.getItem('username');
+      return username;
+    },
   },
   methods: {
     toggle() {

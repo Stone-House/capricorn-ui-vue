@@ -63,7 +63,7 @@ export default {
   data() {
     return {
       form: {
-        name,
+        name: '',
       },
       tableData: [],
       viewShow: false,
@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     getUserList() {
-      let data = [
+      const data = [
         {
           id: '123123',
           name: '张三',
