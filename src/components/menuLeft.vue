@@ -12,11 +12,10 @@
                         <span slot="title">权限管理</span>
                     </template>
 
-                    <el-menu-item index="/user-list">用户列表1</el-menu-item>
+                    <el-menu-item index="/user-list">用户列表</el-menu-item>
                     <el-menu-item index="/about">角色列表</el-menu-item>
                     <el-menu-item index="/vue-fusion-charts">倔强图表</el-menu-item>
                     <el-menu-item index="/about">日志列表</el-menu-item>
-
                 </el-submenu>
             </el-menu>
           </el-scrollbar>

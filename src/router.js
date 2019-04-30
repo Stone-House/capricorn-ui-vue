@@ -40,9 +40,8 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  const username = localStorage.getItem('username');
-
-  if (username) {
+  const name = localStorage.getItem('name');
+  if (name) {
     if (to.name === 'login') {
       next('/');
     } else {

@@ -1,13 +1,12 @@
 import Vue from 'vue';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import Axios from 'axios';
 
 import VueFusionCharts from 'vue-fusioncharts';
 // import FusionCharts modules and resolve dependency
 import FusionCharts from 'fusioncharts/core';
 import Pie2D from 'fusioncharts/viz/pie2d';
-
+import axios from './api'
 
 import App from './App.vue';
 import router from './router';
@@ -18,7 +17,7 @@ import store from './store';
 Vue.use(VueFusionCharts, FusionCharts, Pie2D);
 
 
-Vue.prototype.$axios = Axios;
+Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 new Vue({
