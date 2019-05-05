@@ -1,49 +1,31 @@
 <template>
   <div class="login">
     <div class="img-wrap">
-      <img
-        src="../assets/logo.png"
-        alt=""
-      >
+      <img src="../assets/logo.png" alt>
     </div>
 
-    <el-form
-      :model="loginForm"
-      label-width="100px"
-    >
-      <el-form-item
-        label="用户名"
-        prop="name"
-      >
+    <el-form :model="loginForm" label-width="100px">
+      <el-form-item label="用户名" prop="name">
         <el-input v-model="loginForm.name"></el-input>
       </el-form-item>
-      <el-form-item
-        label="密码"
-        prop="password"
-      >
-        <el-input
-          type="password"
-          v-model="loginForm.password"
-        ></el-input>
+      <el-form-item label="密码" prop="password">
+        <el-input @keyup.enter.native="login" type="password" v-model="loginForm.password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button
-          type="success"
-          @click="login"
-        >登录</el-button>
+        <el-button type="success" @click="login">登录11</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script>
 export default {
-  name: 'login',
+  name: "login",
   data() {
     return {
       loginForm: {
-        name: '',
-        password: '',
-      },
+        name: "",
+        password: ""
+      }
     };
   },
   methods: {
@@ -51,31 +33,38 @@ export default {
       console.log(this.loginForm);
       const { name, password } = this.loginForm;
       if (name && password) {
-        this.$axios
-          .post('/api/v1/users/login', { name, password })
-          .then(resp => {
-            console.log(resp)
-            if (resp.status === 200) {
-              this.$notify.success({
-                title: '提示',
-                message: '登录成功！',
-              });
+        this.$store.dispatch("user/login", { name, password }).then(res => {
+          localStorage.setItem("name", name);
+          this.$router.replace("/");
+          // setTimeout(() => {
+          // }, 100);
+        });
 
-              localStorage.setItem('name', name);
-              setTimeout(() => {
-                this.$router.replace('/');
-              }, 1000);
-            }
-          });
+        // this.$axios
+        //   .post("/api/v1/users/login", { name, password })
+        //   .then(resp => {
+        //     console.log(resp);
+        //     if (resp.status === 200) {
+        //       this.$notify.success({
+        //         title: "提示",
+        //         message: "登录成功！"
+        //       });
+
+        //       localStorage.setItem("name", name);
+        //       setTimeout(() => {
+        //         this.$router.replace("/");
+        //       }, 1000);
+        //     }
+        //   });
       } else {
         this.$notify({
-          title: '警告',
-          message: '请输入用户名、密码',
-          type: 'warning',
+          title: "提示",
+          message: "请输入用户名、密码",
+          type: "warning"
         });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">

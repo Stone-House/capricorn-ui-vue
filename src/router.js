@@ -8,25 +8,18 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
+      redirect: 'user-list',
       component: Home,
       children: [
         {
           path: 'user-list',
-          name: 'user-list',
+          name: 'user_list',
           component: () => import('./views/userAuth/userList'),
         },
         {
-          path: '/about',
-          name: 'about',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
-        },
-        {
-          path: '/vue-fusion-charts',
-          name: 'vue-fusion-charts',
-          component: () => import('./views/list/vueFusionCharts.vue'),
+          path: 'subject-bank-list',
+          name: 'subject_bank_list',
+          component: () => import('./views/subject/subjectBank'),
         },
       ],
     },

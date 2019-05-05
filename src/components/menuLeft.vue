@@ -13,14 +13,18 @@
                     </template>
 
                     <el-menu-item index="/user-list">用户列表</el-menu-item>
-                    <el-menu-item index="/about">角色列表</el-menu-item>
-                    <el-menu-item index="/vue-fusion-charts">倔强图表</el-menu-item>
-                    <el-menu-item index="/about">日志列表</el-menu-item>
+                </el-submenu>
+                <el-submenu>
+                    <template slot="title">
+                        <i class="el-icon-location"></i>
+                        <span slot="title">题目管理</span>
+                    </template>
+                    
+                    <el-menu-item index="/subject-bank-list">题库</el-menu-item>
                 </el-submenu>
             </el-menu>
           </el-scrollbar>
         </div>
-
     </div>
 </template>
 <script>
