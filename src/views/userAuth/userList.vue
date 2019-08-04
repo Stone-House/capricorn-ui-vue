@@ -1,9 +1,9 @@
 <template>
   <div>
-    <el-form inline>
-      <!-- <el-form-item :model="form" label="姓名">
-        <el-input v-model="form.name"></el-input>
-      </el-form-item> -->
+      <el-form inline>
+        <!-- <el-form-item :model="form" label="姓名">
+          <el-input v-model="form.name"></el-input>
+        </el-form-item> -->
       <el-form-item>
         <el-button type="primary" @click="getUserList(objPage)">搜索</el-button>
       </el-form-item>
@@ -114,7 +114,7 @@ export default {
         .then(resp => {
           if (resp.status === 200) {
             this.total = resp.data.count;
-            this.tableData = resp.data.rows;
+            this.tableData = resp.data.list;
           }
         });
     },

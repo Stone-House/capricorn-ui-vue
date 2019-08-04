@@ -14,7 +14,7 @@
 
                     <el-menu-item index="/user-list">用户列表</el-menu-item>
                 </el-submenu>
-                <el-submenu>
+                <el-submenu index="2">
                     <template slot="title">
                         <i class="el-icon-location"></i>
                         <span slot="title">题目管理</span>

@@ -7,5 +7,9 @@ export default {
 
   getUserInfo() {
     return axios.post("/api/v1/users/getUserInfo")    
+  },
+
+  createuser(data) {
+    return axios.post('/api/v1/users', data)
   }
 }
